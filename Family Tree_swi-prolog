@@ -1,0 +1,39 @@
+male(ahmed).
+male(mustaf).
+male(hanat).
+male(musab).
+male(mohamed).
+male(ashraf).
+
+female(leila).
+female(athar).
+female(shan).
+female(miski).
+female(muna).
+parent(ahmed,mustaf).
+parent(leila,mustaf).
+parent(mustaf,hanat).
+parent(mustaf,musab).
+parent(athar,miski).
+parent(athar,hanat).
+parent(athar,muna).
+parent(athar,musab).
+parent(mustaf,miski).
+parent(mustaf,muna).
+parent(mustaf,mohamed).
+parent(athar,mohamed).
+parent(mohamed,ashraf).
+parent(shan,ashraf).
+
+% Rules
+
+father(X,Y):-parent(X,Y), male(X).
+mother(X,Y):-parent(X,Y), female(Y).(X,Y) .
+grandparent(X,Y) :-parent(X,Z), parent(Z,Y).
+great_grandparent(X, Y) :- parent(X, Z), grandparent(Z, Y).
+sibling(X,Y) :-parent(Z,X), parent(Z,Y), X\=y.
+brother(X,Y) :- male(X),sibling(X,Y).
+sister(X,Y) :- female(X),sbling(X,Y).
+uncle(X,Y) :-sibling(X,Z), parent(Z,Y).
+
+
